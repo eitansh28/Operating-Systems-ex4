@@ -1,7 +1,7 @@
-all: threadServer client
+all: server client
 
-threadServer: lib.a threadServer.o 
-	gcc -Wall -g lib.a threadServer.o -o threadServer -lpthread
+server: lib.a server.o 
+	gcc -Wall -g lib.a server.o -o server -lpthread
 
 client: client.o
 	gcc -Wall -g client.o -o client
@@ -12,8 +12,8 @@ lib.a: implementMemory.o
 client.o: client.cpp 
 	gcc -Wall -g -c client.cpp  
 
-threadServer.o: threadServer.cpp implementMemory.hpp 
-	g++ -Wall -g -c threadServer.cpp 
+server.o: server.cpp implementMemory.hpp 
+	g++ -Wall -g -c server.cpp 
 
 implementMemory.o: implementMemory.cpp 
 	gcc -Wall -g -c implementMemory.cpp

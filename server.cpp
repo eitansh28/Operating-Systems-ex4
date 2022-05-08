@@ -112,12 +112,15 @@ void *myThreadFun(void* new_fd){
 
         else if(strstr(buf, "POP")){         
             pthread_mutex_lock(&mylock);
-            if(head == NULL) return 0;
-            stack *PreviousNodePointer = head->next;
-            my_free(head);
-            head = PreviousNodePointer;
-            send(sock, "thank you for popping", 25, 0);
-            pthread_mutex_unlock(&mylock);
+            if(head == NULL) {
+                send(sock, "the stack is empty", 25, 0);
+            }else{
+                stack *PreviousNodePointer = head->next;
+                my_free(head);
+                head = PreviousNodePointer;
+                send(sock, "thank you for popping", 25, 0);
+                pthread_mutex_unlock(&mylock);
+            }
         }
         else if(strstr(buf, "TOP")){ 
             pthread_mutex_lock(&mylock);
