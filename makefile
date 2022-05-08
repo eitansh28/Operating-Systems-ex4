@@ -21,4 +21,4 @@ implementMemory.o: implementMemory.cpp
 .PHONY: all clean
 
 clean :
-	rm -f *.o client threadServer
+	rm -f *.o *.a client threadServer
