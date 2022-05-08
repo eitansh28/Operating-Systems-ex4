@@ -11,8 +11,8 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include <pthread.h>
-// #include "implementMemory.hpp"
-// #include <lib.hpp>
+#include "implementMemory.hpp"
+
   
 typedef struct stack{
     char str[1024];
@@ -124,7 +124,9 @@ void *myThreadFun(void* new_fd){
             if (head == NULL){
                 send(sock, "the stack is empty", 25, 0);
             }else {
-                send(sock, head->str, strlen(head->str), 0);
+                char ans[1024]="OUTPUT: ";
+                strcat(ans, head->str);
+                send(sock, ans, strlen(ans), 0);
             }
             pthread_mutex_unlock(&mylock);
         }  
