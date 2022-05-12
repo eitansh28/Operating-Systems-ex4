@@ -24,6 +24,7 @@ typedef struct stack{
 #define BACKLOG 10   // how many pending connections queue will hold
 pthread_mutex_t mylock = PTHREAD_MUTEX_INITIALIZER;
 
+//I took this code from https://stackoverflow.com/questions/5422061/malloc-implementation
 typedef struct free_block {
     size_t size;
     struct free_block* next;
